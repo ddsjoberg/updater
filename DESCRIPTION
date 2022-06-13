@@ -1,0 +1,23 @@
+Package: updater
+Title: Utilities When Updating R
+Version: 0.0.0.9000
+Authors@R: 
+    person("Daniel D.", "Sjoberg", , "danield.sjoberg@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0003-0862-2018"))
+Description: When updating major or minor R versions all packages should
+    be re-installed. The utilities in this package assist in getting a
+    user up-and-running again by installing all previously installed R
+    packages. The pacakge also uses 'renv' to install; immeidaly
+    replenishing your 'renv' package cache.
+License: MIT + file LICENSE
+Imports: 
+    cli,
+    dplyr,
+    renv,
+    rlang (>= 1.0.2)
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
