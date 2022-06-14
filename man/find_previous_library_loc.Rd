@@ -12,9 +12,9 @@ package library location
 \description{
 The function searches the system paths to find the location of the
 previous R version's system library location.
-It is recommended to \emph{not} use this function!
-Rather, we recommend that a user simply open the previous version of R
-and run \code{.libPaths()} to find the library location(s).
+It is \emph{not} recommended to use this function!
+Rather, we recommend that a user simply opens the previous version of R
+and runs \code{.libPaths()} to find the library location(s).
 }
 \examples{
 find_previous_library_loc()

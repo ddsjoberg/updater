@@ -2,9 +2,9 @@
 #'
 #' The function searches the system paths to find the location of the
 #' previous R version's system library location.
-#' It is recommended to _not_ use this function!
-#' Rather, we recommend that a user simply open the previous version of R
-#' and run `.libPaths()` to find the library location(s).
+#' It is _not_ recommended to use this function!
+#' Rather, we recommend that a user simply opens the previous version of R
+#' and runs `.libPaths()` to find the library location(s).
 #'
 #' @return package library location
 #' @export
