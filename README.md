@@ -36,26 +36,26 @@ devtools::install_github("ddsjoberg/updater")
 
 ## Usage
 
-1.  Record location of current R system library.
+1.  Record location of current R system library
 
-    -   Open your current R (before you update), and type `.libPaths()`
-        into the console. The current R system library locations will
-        print to the console: save these file locations to separate
-        file, e.g. copy and past the locations into Notepad or TextEdit.
+    -   Open your current version of R (before you update), and type
+        `.libPaths()` into the console. The current R system library
+        locations will print to the console: save these file locations,
+        e.g. copy and past the locations into Notepad or TextEdit.
 
 2.  Install R
 
     -   Download and install the new version of R from
         <https://cran.r-project.org/>.
 
-3.  For Windows users, install RTools.
+3.  For Windows users, install RTools
 
     -   Download and install the latest version of RTools (if not
         already installed) from
         <https://cran.r-project.org/bin/windows/Rtools/>.
 
-4.  Install packages.
+4.  Install packages
 
     -   Open your new version of R and install the {updater} package.
     -   Run
-        `updater::install_pkgs(lib.loc = "<location of previous R installation system library saved in step 1>")`
+        `updater::install_pkgs(lib.loc = c("<location(s) saved in step 1>"))`
