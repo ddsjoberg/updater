@@ -1,0 +1,39 @@
+#' R Versions
+#'
+#' These functions return the current R version and the
+#' the previously installed R version.
+#'
+#' @return string of R version
+#' @name r_version
+#'
+#' @examples
+#' r_version()
+#'
+#' previous_r_version()
+NULL
+
+#' @rdname r_version
+#' @export
+r_version <- function() {
+  paste0("R-", R.version$major, ".", R.version$minor)
+}
+
+#' @rdname r_version
+#' @export
+previous_r_version <- function() {
+  # find the previous R installation folder and return the folder name ---------
+  r_version <-
+    dirname(R.home()) %>%
+    list.files() %>%
+    setdiff(r_version()) %>%
+    sort(decreasing = TRUE) %>%
+    getElement(1)
+
+  # if couldn't find previous installation, return NULL ------------------------
+  if (rlang::is_empty(r_version)) {
+    cli::cli_alert_danger("Could not determine the last R version installed.")
+    return(invisible())
+  }
+
+  r_version
+}

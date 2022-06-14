@@ -32,7 +32,7 @@ get_installed_pkgs <- function(lib.loc = NULL) {
   # return df of pkgs that will be installed -----------------------------------
   package_name_width <- df_pkgs$Package %>% nchar() %>% max()
   df_pkgs %>%
-    dplyr::select(install_from, package = Package, renv_install_pkg_arg) %>%
+    dplyr::select(.data$install_from, package = .data$Package, .data$renv_install_pkg_arg) %>%
     dplyr::rowwise() %>%
     dplyr::mutate(
       package_name_same_length =
