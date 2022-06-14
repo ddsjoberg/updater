@@ -16,7 +16,16 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/find_previous_library_loc.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/install_pkgs.html</loc>
+  </url>
+  <url>
+    <loc>/reference/r_version.html</loc>
   </url>
   <url>
     <loc>/reference/reexports.html</loc>
