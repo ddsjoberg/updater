@@ -23,9 +23,7 @@
 install_pkgs <- function(lib.loc = NULL) {
   cli::cli_h1("Importing Package Information")
   # get data frame of all pkgs that will be installed --------------------------
-  df_pkgs_to_install <- get_installed_pkgs(lib.loc = lib.loc) %>%
-    dplyr::group_by(install_from) %>%
-    dplyr::filter(install_from != "Unknown", dplyr::row_number() < 15)
+  df_pkgs_to_install <- get_installed_pkgs(lib.loc = lib.loc)
   cli::cli_alert_info("Found {.val {nrow(df_pkgs_to_install)}} packages")
 
   walk(

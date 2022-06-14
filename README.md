@@ -63,4 +63,4 @@ devtools::install_github("ddsjoberg/updater")
     -   Run
         `updater::install_pkgs(lib.loc = c("<location(s) saved in step 1>"))`
 
-    ![](man\figures\install_screenshot.png)
+    <img src = "https://github.com/ddsjoberg/updater/blob/main/man/figures/install_screenshot.png?raw=true">

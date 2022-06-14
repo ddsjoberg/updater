@@ -60,4 +60,4 @@ devtools::install_github("ddsjoberg/updater")
     - Open your new version of R and install the {updater} package.
     - Run `updater::install_pkgs(lib.loc = c("<location(s) saved in step 1>"))`
     
-    ![](man\figures\install_screenshot.png)
+    <img src = "https://github.com/ddsjoberg/updater/blob/main/man/figures/install_screenshot.png?raw=true">
