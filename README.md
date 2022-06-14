@@ -11,7 +11,15 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/updater)](https://CRAN.R-project.org/package=updater)
 <!-- badges: end -->
 
-The goal of updater is to …
+The goal of updater is to ease the R update process. The package will
+re-install packages available on your previous version of R into the
+system library of your new installation. The package uses {renv} to
+install the packages, adding each installation into your {renv} cache.
+
+Importantly, the package *re-installs* the packages and does *not* copy
+them from the previous R installation library. R packages for minor R
+releases (e.g. R 4.1 to R 4.2) may *not* be compatible, which is why
+it’s important to re-install the packages and not copy them.
 
 ## Installation
 
@@ -23,38 +31,28 @@ You can install the development version of updater from
 devtools::install_github("ddsjoberg/updater")
 ```
 
-## Example
+## Usage
 
-This is a basic example which shows you how to solve a common problem:
+1.  Record location of current R system library.
 
-``` r
-library(updater)
-## basic example code
-```
+    -   Open your current R (before you update), and type `.libPaths()`
+        into the console. The current R system library locations will
+        print to the console: save these file locations to separate
+        file, e.g. copy and past the locations into Notepad or TextEdit.
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+2.  Install R
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+    -   Download and install the new version of R from
+        <https://cran.r-project.org/>.
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+3.  For Windows users, install RTools.
 
-You can also embed plots, for example:
+    -   Download and install the latest version of RTools (if not
+        already installed) from
+        <https://cran.r-project.org/bin/windows/Rtools/>.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+4.  Install packages.
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+    -   Open your new version of R and install the {updater} package.
+    -   Run
+        `updater::install_pkgs(lib.loc = "<location of previous R installation system library saved in step 1>")`
