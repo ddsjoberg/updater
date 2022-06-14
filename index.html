@@ -78,22 +78,22 @@
 </h2>
 <ol style="list-style-type: decimal">
 <li>
-<p>Record location of current R system library.</p>
-<ul><li>Open your current R (before you update), and type <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths()</a></code> into the console. The current R system library locations will print to the console: save these file locations to separate file, e.g. copy and past the locations into Notepad or TextEdit.</li></ul>
+<p>Record location of current R system library</p>
+<ul><li>Open your current version of R (before you update), and type <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths()</a></code> into the console. The current R system library locations will print to the console: save these file locations, e.g. copy and past the locations into Notepad or TextEdit.</li></ul>
 </li>
 <li>
 <p>Install R</p>
 <ul><li>Download and install the new version of R from <a href="https://cran.r-project.org/" class="external-link uri">https://cran.r-project.org/</a>.</li></ul>
 </li>
 <li>
-<p>For Windows users, install RTools.</p>
+<p>For Windows users, install RTools</p>
 <ul><li>Download and install the latest version of RTools (if not already installed) from <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link uri">https://cran.r-project.org/bin/windows/Rtools/</a>.</li></ul>
 </li>
 <li>
-<p>Install packages.</p>
+<p>Install packages</p>
 <ul>
 <li>Open your new version of R and install the {updater} package.</li>
-<li>Run <code>updater::install_pkgs(lib.loc = "&lt;location of previous R installation system library saved in step 1&gt;")</code>
+<li>Run <code>updater::install_pkgs(lib.loc = c("&lt;location(s) saved in step 1&gt;"))</code>
 </li>
 </ul>
 </li>
