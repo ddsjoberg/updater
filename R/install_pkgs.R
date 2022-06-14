@@ -23,27 +23,31 @@
 install_pkgs <- function(lib.loc = NULL) {
   cli::cli_h1("Importing Package Information")
   # get data frame of all pkgs that will be installed --------------------------
-  df_pkgs_to_install <- get_installed_pkgs(lib.loc = lib.loc)
+  df_pkgs_to_install <- get_installed_pkgs(lib.loc = lib.loc) %>%
+    dplyr::group_by(install_from) %>%
+    dplyr::filter(install_from != "Unknown", dplyr::row_number() < 15)
+  cli::cli_alert_info("Found {.val {nrow(df_pkgs_to_install)}} packages")
+
+  walk(
+    unique(df_pkgs_to_install$install_from),
+    function(x) cli::cli_alert("{x}: {.pkg {df_pkgs_to_install[df_pkgs_to_install$install_from %in% x, 'package', drop = TRUE]}}")
+  )
 
   # print pkgs that will be installed ------------------------------------------
-  cli::cli_h1("Installing {.val {nrow(df_pkgs_to_install)}} Packages")
-
-  cli::cli_h2("Packages to be installed")
-  df_pkgs_to_install %>%
-    dplyr::group_by(.data$install_from) %>%
-    dplyr::group_walk(~cli::cli_alert("{.y$install_from}: {.pkg {.x$package}}"))
-  cat("\n")
+  cli::cli_h1("Installing Packages")
 
   # print information about install sources ------------------------------------
   repos <- getOption("repos")
   repo_names <-
-    unique(df_pkgs_to_install$install_from) %>%
-    setdiff(c("BioConductor", "GitHub", "GitLab"))
+    setdiff(
+      unique(df_pkgs_to_install$install_from),
+      c("BioConductor", "GitHub", "GitLab")
+    )
 
-  if (!rlang::is_empty(repo_names)) {
+  if (is_named(repos)) {
     cli_repos <-
       ifelse(
-        rlang::is_named(repos),
+        is_named(repos),
         paste0(
           "{.pkg ", names(repos), "} ",
           "({.url ", repos, "})",
@@ -56,13 +60,14 @@ install_pkgs <- function(lib.loc = NULL) {
       )
     cli_repo_msg <-
       paste("Packages in repositories {.pkg {repo_names}} will be installed from", cli_repos)
-    cli::cli_h2("Packages installed sources")
     cli::cli_alert_info(cli_repo_msg)
-    cat("\n")
   }
+  else {
+    cli::cli_alert_info("Packages in repositories {.pkg {repo_names}} will be installed from {.url {repos}}")
+  }
+  cat("\n")
 
   # installing packages --------------------------------------------------------
-  cli::cli_h2("Installing packages")
   install_pkgs_with_renv_install(df_pkgs_to_install)
 
   cli::cli_alert_success("Installation Complete!")

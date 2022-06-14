@@ -27,7 +27,7 @@ find_previous_library_loc <- function() {
     current_lib_loc[grepl(pattern = r_version(), current_lib_loc)]
 
   # give up if not found -------------------------------------------------------
-  if (rlang::is_empty(current_lib_loc)) {
+  if (is_empty(current_lib_loc)) {
     cli::cli_alert_danger(give_up_msg)
     return(invisible())
   }
@@ -41,7 +41,7 @@ find_previous_library_loc <- function() {
   previous_lib_loc <-
     previous_lib_loc[file.exists(previous_lib_loc)]
 
-  if (rlang::is_empty(previous_lib_loc)) {
+  if (is_empty(previous_lib_loc)) {
     cli::cli_alert_danger(give_up_msg)
     return(invisible())
   }

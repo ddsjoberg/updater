@@ -23,14 +23,23 @@ r_version <- function() {
 previous_r_version <- function() {
   # find the previous R installation folder and return the folder name ---------
   r_version <-
-    dirname(R.home()) %>%
-    list.files() %>%
-    setdiff(r_version()) %>%
-    sort(decreasing = TRUE) %>%
-    getElement(1)
+    getElement(
+      sort(
+        setdiff(
+          list.files(
+            dirname(
+              R.home()
+            )
+          ),
+          r_version()
+        ),
+        decreasing = TRUE
+      ),
+      1
+    )
 
   # if couldn't find previous installation, return NULL ------------------------
-  if (rlang::is_empty(r_version)) {
+  if (is_empty(r_version)) {
     cli::cli_alert_danger("Could not determine the last R version installed.")
     return(invisible())
   }

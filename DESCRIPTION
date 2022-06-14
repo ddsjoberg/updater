@@ -12,9 +12,7 @@ Description: When updating major or minor R versions all packages should
 License: MIT + file LICENSE
 Imports: 
     cli,
-    dplyr,
-    renv,
-    rlang (>= 1.0.2)
+    renv
 Suggests: 
     covr,
     testthat (>= 3.0.0)

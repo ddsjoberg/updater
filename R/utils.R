@@ -1,49 +1,65 @@
 
 get_installed_pkgs <- function(lib.loc = NULL) {
   df_pkgs <-
-    utils::installed.packages(
-      lib.loc = lib.loc,
-      fields = c("Repository", "RemoteType", "RemoteHost", "RemoteUsername",
-                 "RemoteRepo", "RemoteRef", "git_url")
-    ) %>%
-    dplyr::as_tibble() %>%
-    filter(!.data$Package %in% .env$base_pkgs) %>% # remove Base R packages
-    dplyr::mutate(
-      install_from =
-        dplyr::case_when(
-          .data$RemoteType %in% "github" ~ "GitHub",
-          .data$RemoteType %in% "gitlab" ~ "GitLab",
-          grepl(pattern = "bioconductor.org", x = .data$git_url, fixed = TRUE) ~
-            "BioConductor",
-          !is.na(.data$Repository) ~ .data$Repository,
-          TRUE ~ "Unknown"
-        ),
-      renv_install_pkg_arg =
-        dplyr::case_when(
-          .data$install_from %in% c("GitHub", "GitLab") ~
-            paste0(.data$RemoteType, "::",
-                   .data$RemoteUsername, "/",
-                   .data$RemoteRepo, "@", RemoteRef),
-          .data$install_from %in% "BioConductor" ~ paste0("bioc::", .data$Package),
-          !is.na(.data$install_from) ~ .data$Package
+    as.data.frame(
+      utils::installed.packages(
+        lib.loc = lib.loc,
+        fields = c("Repository", "RemoteType", "RemoteHost", "RemoteUsername",
+                   "RemoteRepo", "RemoteRef", "git_url")
+      )
+    )
+
+  df_pkgs <- df_pkgs[!df_pkgs$Package %in% base_pkgs, ]
+  df_pkgs$install_from <-
+    ifelse(
+      df_pkgs$RemoteType %in% "github", "GitHub",
+      ifelse(
+        df_pkgs$RemoteType %in% "gitlab", "GitLab",
+        ifelse(
+          grepl(pattern = "bioconductor.org", x = df_pkgs$git_url, fixed = TRUE), "BioConductor",
+          ifelse(
+            !is.na(df_pkgs$Repository), df_pkgs$Repository, "Unknown"
+          )
         )
+      )
+    )
+
+  df_pkgs$renv_install_pkg_arg <-
+    ifelse(
+      df_pkgs$install_from %in% c("GitHub", "GitLab"),
+      paste0(df_pkgs$RemoteType, "::",
+             df_pkgs$RemoteUsername, "/",
+             df_pkgs$RemoteRepo, "@", df_pkgs$RemoteRef),
+      ifelse(
+        df_pkgs$install_from %in% "BioConductor", paste0("bioc::", df_pkgs$Package),
+        df_pkgs$Package
+      )
     )
 
   # return df of pkgs that will be installed -----------------------------------
-  package_name_width <- df_pkgs$Package %>% nchar() %>% max()
-  df_pkgs %>%
-    dplyr::select(.data$install_from, package = .data$Package, .data$renv_install_pkg_arg) %>%
-    dplyr::rowwise() %>%
-    dplyr::mutate(
-      package_name_same_length =
-        paste0(.data$package, paste(rep_len(" ", .env$package_name_width - nchar(.data$package)), collapse = "")),
-    ) %>%
-    dplyr::ungroup()
+  package_name_width <- max(nchar(df_pkgs$Package))
+  df_return <-
+    stats::setNames(
+      df_pkgs[c("install_from", "Package" , "renv_install_pkg_arg")],
+      c("install_from", "package" , "renv_install_pkg_arg")
+    )
+
+  df_return$package_name_same_length <-
+    unlist(
+      lapply(
+        df_return$package,
+        function(x) {
+          paste0(x, paste(rep_len(" ", package_name_width - nchar(x)), collapse = ""))
+        }
+      )
+    )
+
+  df_return
 }
 
 install_pkgs_with_renv_install <- function(df_pkgs_to_install) {
   cli::cli_progress_bar(
-    format = "Installing {.pkg {df_pkgs_to_install$package_name_same_length[i]}}| {cli::pb_bar} ETA {cli::pb_eta}",
+    format = "Installing {.pkg {df_pkgs_to_install$package_name_same_length[i]}}| {cli::pb_bar}| ETA {cli::pb_eta}",
     total = nrow(df_pkgs_to_install)
   )
 
@@ -59,6 +75,19 @@ install_pkgs_with_renv_install <- function(df_pkgs_to_install) {
     cli::cli_progress_update()
   }
   cli::cli_progress_done()
+}
+
+is_empty <- function(x) length(x) == 0
+
+is_named <- function(x) {
+  nms <- names(x)
+  if (is.null(nms)) {
+    return(FALSE)
+  }
+  if (any(nms == "")) {
+    return(FALSE)
+  }
+  TRUE
 }
 
 base_pkgs <- c(
