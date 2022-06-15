@@ -6,7 +6,8 @@ get_installed_pkgs <- function(lib.loc = NULL) {
         lib.loc = lib.loc,
         fields = c("Repository", "RemoteType", "RemoteHost", "RemoteUsername",
                    "RemoteRepo", "RemoteRef", "git_url")
-      )
+      ),
+      stringsAsFactors = FALSE
     )
 
   df_pkgs <- df_pkgs[!df_pkgs$Package %in% base_pkgs, ]
@@ -37,7 +38,7 @@ get_installed_pkgs <- function(lib.loc = NULL) {
     )
 
   # return df of pkgs that will be installed -----------------------------------
-  package_name_width <- max(nchar(as.character(df_pkgs$Package)))
+  package_name_width <- max(nchar(df_pkgs$Package))
   df_return <-
     stats::setNames(
       df_pkgs[c("install_from", "Package" , "renv_install_pkg_arg")],
@@ -49,7 +50,7 @@ get_installed_pkgs <- function(lib.loc = NULL) {
       lapply(
         df_return$package,
         function(x) {
-          paste0(x, paste(rep_len(" ", package_name_width - nchar(as.character(x))), collapse = ""))
+          paste0(x, paste(rep_len(" ", package_name_width - nchar(x)), collapse = ""))
         }
       )
     )
