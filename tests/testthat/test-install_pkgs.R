@@ -2,8 +2,10 @@ test_that("install_pkgs() works", {
   expect_error(r_version(), NA)
   expect_error(previous_r_version(), NA)
   expect_error(find_previous_library_loc(), NA)
-  expect_error(get_installed_pkgs(), NA)
+  expect_error(df_pkgs_to_install <- get_installed_pkgs(), NA)
   expect_error(walk(letters, print), NA)
+  expect_error(print_repos_and_pkgs(df_pkgs_to_install), NA)
+  expect_error(print_install_sources(df_pkgs_to_install), NA)
 
   expect_true(is_named(list(one = 1, two = 2)))
   expect_false(is_named(list(one = 1, 2)))
