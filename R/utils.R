@@ -49,7 +49,7 @@ get_installed_pkgs <- function(lib.loc = NULL) {
       lapply(
         df_return$package,
         function(x) {
-          paste0(x, paste(rep_len(" ", package_name_width - nchar(x)), collapse = ""))
+          paste0(x, paste(rep_len(" ", package_name_width - nchar(as.character(x))), collapse = ""))
         }
       )
     )
