@@ -51,16 +51,10 @@ devtools::install_github("ddsjoberg/updater")
     -   Download and install the new version of R from
         <https://cran.r-project.org/>.
 
-3.  For Windows users, install RTools
-
-    -   Download and install the latest version of RTools (if not
-        already installed) from
-        <https://cran.r-project.org/bin/windows/Rtools/>.
-
-4.  Install packages
+3.  Install packages
 
     -   Open your new version of R and install the {updater} package.
     -   Run
-        `updater::install_pkgs(lib.loc = c("<location(s) saved in step 1>"))`
+        `updater::install_pkgs(lib.loc = c("<location(s) saved in Step 1>"))`
 
     <img src = "https://github.com/ddsjoberg/updater/blob/main/man/figures/install_screenshot.png?raw=true">
