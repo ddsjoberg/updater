@@ -2,3 +2,11 @@ url: https://www.danieldsjoberg.com/updater/
 template:
   bootstrap: 5
   bootswatch: simplex
+
+# development:
+#   mode: auto
+#   version_label: default
+
+authors:
+  Daniel D. Sjoberg:
+    href: "http://www.danieldsjoberg.com/"

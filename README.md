@@ -44,7 +44,7 @@ devtools::install_github("ddsjoberg/updater")
         e.g. copy and past the locations into Notepad or TextEdit.
     -   It may be possible to skip this step and find the library
         location using `find_previous_library_loc()`, but it’s
-        recomended to use `.libPaths()` to ensure accuracy.
+        recommended to use `.libPaths()` to ensure accuracy.
 
 2.  Install R
 

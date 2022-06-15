@@ -6,7 +6,7 @@
 \alias{updater-package}
 \title{updater: Utilities When Updating R}
 \description{
-When updating major or minor R versions all packages should be re-installed. The utilities in this package assist in getting a user up-and-running again by installing all previously installed R packages. The pacakge also uses 'renv' to install; immeidaly replenishing your 'renv' package cache.
+When updating major or minor R versions all packages should be re-installed. The utilities in this package assist in getting a user up-and-running again by installing all previously installed R packages. The package uses 'renv' to install; immediately replenishing your 'renv' package cache.
 }
 \author{
 \strong{Maintainer}: Daniel D. Sjoberg \email{danield.sjoberg@gmail.com} (\href{https://orcid.org/0000-0003-0862-2018}{ORCID}) [copyright holder]
