@@ -2,5 +2,8 @@ pandoc: 2.14.2
 pkgdown: 2.0.4
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-06-15T00:09Z
+last_built: 2022-06-15T00:33Z
+urls:
+  reference: https://www.danieldsjoberg.com/updater/reference
+  article: https://www.danieldsjoberg.com/updater/articles
 
