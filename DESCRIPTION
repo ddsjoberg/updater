@@ -11,8 +11,8 @@ Description: When updating major or minor R versions all packages should
     replenishing your 'renv' package cache.
 License: MIT + file LICENSE
 Imports: 
-    cli,
-    renv
+    cli (>= 3.3.0),
+    renv (>= 0.15.5)
 Suggests: 
     covr,
     spelling,
