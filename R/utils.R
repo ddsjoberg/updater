@@ -37,7 +37,7 @@ get_installed_pkgs <- function(lib.loc = NULL) {
     )
 
   # return df of pkgs that will be installed -----------------------------------
-  package_name_width <- max(nchar(df_pkgs$Package))
+  package_name_width <- max(nchar(as.character(df_pkgs$Package)))
   df_return <-
     stats::setNames(
       df_pkgs[c("install_from", "Package" , "renv_install_pkg_arg")],
