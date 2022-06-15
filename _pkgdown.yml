@@ -1,0 +1,4 @@
+url: https://www.danieldsjoberg.com/updater/
+template:
+  bootstrap: 5
+  bootswatch: simplex
