@@ -65,14 +65,6 @@
 <p>The goal of updater is to ease the R update process. The package will re-install packages available on your previous version of R into the system library of your new installation. The package uses {renv} to install the packages, adding each installation into your {renv} cache.</p>
 <p>Importantly, the package <em>re-installs</em> the packages and does <em>not</em> copy them from the previous R installation library. R packages for minor R releases (e.g. R 4.1 to R 4.2) may <em>not</em> be compatible, which is why it’s important to re-install the packages and not copy them.</p>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<p>You can install the development version of updater from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ddsjoberg/updater"</span><span class="op">)</span></code></pre></div>
-</div>
-<div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <ol style="list-style-type: decimal">
@@ -80,7 +72,7 @@
 <p>Record location of current R system library</p>
 <ul>
 <li>Open your current version of R (before you update), and type <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths()</a></code> into the console. The current R system library locations will print to the console: save these file locations, e.g. copy and past the locations into Notepad or TextEdit.</li>
-<li>It may be possible to skip this step and find the library location using <code><a href="reference/find_previous_library_loc.html">find_previous_library_loc()</a></code>, but it’s recommended to use <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths()</a></code> to ensure accuracy.</li>
+<li>It may be possible to skip this step and find the library location by calling <code><a href="reference/find_previous_library_loc.html">find_previous_library_loc()</a></code> from your updated R, but it’s recommended to use <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths()</a></code> now to ensure accuracy.</li>
 </ul>
 </li>
 <li>
@@ -90,8 +82,8 @@
 <li>
 <p>Install packages</p>
 <ul>
-<li>Open your new version of R and install the {updater} package.</li>
-<li>Run <code>updater::install_pkgs(lib.loc = c("&lt;location(s) saved in Step 1&gt;"))</code>
+<li>Open your new version of R and install the {updater} package with <code>install.packages("updater")</code>.</li>
+<li>Run <code>updater::install_pkgs(lib.loc = c("&lt;location(s) saved in Step 1&gt;"))</code>. <em>As mentioned above, if you didn’t record the location, you may try to locate it with <code><a href="reference/find_previous_library_loc.html">find_previous_library_loc()</a></code>.</em>
 </li>
 </ul>
 <p><img src="https://github.com/ddsjoberg/updater/blob/main/man/figures/install_screenshot.png?raw=true"></p>
