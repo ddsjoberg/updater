@@ -15,6 +15,7 @@ string of R version
 \description{
 These functions return the current R version and the
 the previously installed R version.
+The format of the returned version matches the default folder name where R is installed.
 }
 \examples{
 r_version()

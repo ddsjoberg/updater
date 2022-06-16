@@ -4,7 +4,7 @@
 \name{updater-package}
 \alias{updater}
 \alias{updater-package}
-\title{updater: Utilities When Updating R}
+\title{updater: Utilities for Updating R}
 \description{
 When updating major or minor R versions all packages should be re-installed. The utilities in this package assist in getting a user up-and-running again by installing all previously installed R packages. The package uses 'renv' to install; immediately replenishing your 'renv' package cache.
 }

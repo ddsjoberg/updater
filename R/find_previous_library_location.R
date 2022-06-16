@@ -10,9 +10,9 @@
 #' @export
 #'
 #' @examples
-#' find_previous_library_loc()
+#' find_previous_library_location()
 
-find_previous_library_loc <- function() {
+find_previous_library_location <- function() {
   # stop if can't find the previous R version ----------------------------------
   if (is.null(previous_r_version())) {
     cli::cli_alert_danger(give_up_msg)
