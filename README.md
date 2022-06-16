@@ -24,16 +24,6 @@ them from the previous R installation library. R packages for minor R
 releases (e.g. R 4.1 to R 4.2) may *not* be compatible, which is why
 it’s important to re-install the packages and not copy them.
 
-## Installation
-
-You can install the development version of updater from
-[GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("ddsjoberg/updater")
-```
-
 ## Usage
 
 1.  Record location of current R system library
@@ -43,8 +33,9 @@ devtools::install_github("ddsjoberg/updater")
         locations will print to the console: save these file locations,
         e.g. copy and past the locations into Notepad or TextEdit.
     -   It may be possible to skip this step and find the library
-        location using `find_previous_library_loc()`, but it’s
-        recommended to use `.libPaths()` to ensure accuracy.
+        location by calling `find_previous_library_loc()` from your
+        updated R, but it’s recommended to use `.libPaths()` now to
+        ensure accuracy.
 
 2.  Install R
 
@@ -53,8 +44,11 @@ devtools::install_github("ddsjoberg/updater")
 
 3.  Install packages
 
-    -   Open your new version of R and install the {updater} package.
+    -   Open your new version of R and install the {updater} package
+        with `install.packages("updater")`.
     -   Run
-        `updater::install_pkgs(lib.loc = c("<location(s) saved in Step 1>"))`
+        `updater::install_pkgs(lib.loc = c("<location(s) saved in Step 1>"))`.
+        *As mentioned above, if you didn’t record the location, you may
+        try to locate it with `find_previous_library_loc()`.*
 
     <img src = "https://github.com/ddsjoberg/updater/blob/main/man/figures/install_screenshot.png?raw=true">
