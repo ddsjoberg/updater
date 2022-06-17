@@ -3,9 +3,9 @@ template:
   bootstrap: 5
   bootswatch: simplex
 
-# development:
-#   mode: auto
-#   version_label: default
+development:
+  mode: auto
+  version_label: default
 
 authors:
   Daniel D. Sjoberg:
