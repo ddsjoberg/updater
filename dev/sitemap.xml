@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/reference/find_previous_library_location.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/reference/install_pkgs.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/reference/r_version.html</loc>
+  </url>
+  <url>
+    <loc>https://www.danieldsjoberg.com/updater/dev/reference/updater-package.html</loc>
+  </url>
+</urlset>
