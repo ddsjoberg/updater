@@ -10,6 +10,8 @@ Description: When updating major or minor R versions all packages should
     packages. The package uses 'renv' to install; immediately replenishing
     your 'renv' package cache.
 License: MIT + file LICENSE
+URL: https://github.com/ddsjoberg/updater, https://www.danieldsjoberg.com/updater/
+BugReports: https://github.com/ddsjoberg/updater/issues
 Imports: 
     cli (>= 3.3.0),
     renv (>= 0.15.5)

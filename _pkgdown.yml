@@ -13,3 +13,5 @@ authors:
 
 navbar:
   bg: info
+  structure:
+    right: [search, github]

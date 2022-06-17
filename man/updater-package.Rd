@@ -8,6 +8,15 @@
 \description{
 When updating major or minor R versions all packages should be re-installed. The utilities in this package assist in getting a user up-and-running again by installing all previously installed R packages. The package uses 'renv' to install; immediately replenishing your 'renv' package cache.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ddsjoberg/updater}
+  \item \url{https://www.danieldsjoberg.com/updater/}
+  \item Report bugs at \url{https://github.com/ddsjoberg/updater/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Daniel D. Sjoberg \email{danield.sjoberg@gmail.com} (\href{https://orcid.org/0000-0003-0862-2018}{ORCID}) [copyright holder]
 
