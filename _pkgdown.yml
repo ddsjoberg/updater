@@ -10,3 +10,6 @@ development:
 authors:
   Daniel D. Sjoberg:
     href: "http://www.danieldsjoberg.com/"
+
+navbar:
+  bg: info

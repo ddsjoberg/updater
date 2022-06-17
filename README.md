@@ -6,11 +6,12 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/ddsjoberg/updater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ddsjoberg/updater/actions/workflows/R-CMD-check.yaml)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-<!-- [![CRAN status](https://www.r-pkg.org/badges/version/updater)](https://CRAN.R-project.org/package=updater) -->
+[![CRAN
+status](https://www.r-pkg.org/badges/version/updater)](https://CRAN.R-project.org/package=updater)
 [![Codecov test
 coverage](https://codecov.io/gh/ddsjoberg/updater/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ddsjoberg/updater?branch=main)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The goal of updater is to ease the R update process. The package will
