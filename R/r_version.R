@@ -44,6 +44,10 @@ previous_r_version <- function() {
     cli::cli_alert_danger("Could not determine the last R version installed.")
     return(invisible())
   }
+  if (!startsWith(tolower(r_version), "r-")) {
+    cli::cli_alert_danger("Could not determine the last R version installed.")
+    return(invisible())
+  }
 
   r_version
 }
