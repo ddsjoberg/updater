@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">updater</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.0.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,9 @@
       <small>Source: <a href="https://github.com/ddsjoberg/updater/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="section level2"><h2 class="pkg-version" data-toc-text="development version" id="updater-development-version">updater (development version)<a class="anchor" aria-label="anchor" href="#updater-development-version"></a></h2></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="updater-development-version">updater (development version)<a class="anchor" aria-label="anchor" href="#updater-development-version"></a></h2>
+<ul><li>Added a condition in <code><a href="../reference/r_version.html">previous_r_version()</a></code> that the R version returned must begin with <code>"R-"</code>. Previously, an incorrect value could be returned that was <em>not</em> an R version. (<a href="https://github.com/ddsjoberg/updater/issues/2" class="external-link">#2</a>)</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="updater-010">updater 0.1.0<a class="anchor" aria-label="anchor" href="#updater-010"></a></h2><p class="text-muted">CRAN release: 2022-06-17</p>
 <ul><li>First release.</li></ul></div>
