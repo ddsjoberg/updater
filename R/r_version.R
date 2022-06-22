@@ -38,13 +38,11 @@ previous_r_version <- function() {
       ),
       1
     )
+  # keeping folder names that adhere to the install folder naming convention
+  r_version <- r_version[startsWith(tolower(r_version), "r-")]
 
   # if couldn't find previous installation, return NULL ------------------------
   if (is_empty(r_version)) {
-    cli::cli_alert_danger("Could not determine the last R version installed.")
-    return(invisible())
-  }
-  if (!startsWith(tolower(r_version), "r-")) {
     cli::cli_alert_danger("Could not determine the last R version installed.")
     return(invisible())
   }
