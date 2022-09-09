@@ -35,7 +35,10 @@ it’s important to re-install the packages and not copy them.
     -   It may be possible to skip this step and find the library
         location by calling `find_previous_library_location()` from your
         updated R session, but it’s recommended to use `.libPaths()` now
-        to ensure accuracy.
+        to ensure accuracy. It’s likely that this function only works on
+        **Windows** machines. If you are a Mac or Linux user and would
+        like to contrbute to your OS’s functionality, please file an
+        issue on GitHub.
 
 2.  Install R
 

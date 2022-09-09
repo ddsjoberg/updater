@@ -58,6 +58,7 @@ print_install_sources <- function(df_pkgs_to_install) {
       unique(df_pkgs_to_install$install_from),
       c("BioConductor", "GitHub", "GitLab")
     )
+  repo_names <- repo_names[!endsWith(repo_names, ".r-universe.dev")]
 
   if (is_named(repos)) {
     cli_repos <-
