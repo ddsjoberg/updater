@@ -1,4 +1,4 @@
-# updater (development version)
+# updater 0.1.1
 
 * The `install_pkgs()` function can now re-install packages from the R-Universe. (#3)
 
