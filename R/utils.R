@@ -26,16 +26,30 @@ get_installed_pkgs <- function(lib.loc = NULL) {
     )
 
   df_pkgs$renv_install_pkg_arg <-
-    ifelse(
-      df_pkgs$install_from %in% c("GitHub", "GitLab"),
-      paste0(df_pkgs$RemoteType, "::",
-             df_pkgs$RemoteUsername, "/",
-             df_pkgs$RemoteRepo, "@", df_pkgs$RemoteRef),
-      ifelse(
-        df_pkgs$install_from %in% "BioConductor", paste0("bioc::", df_pkgs$Package),
-        df_pkgs$Package
-      )
+    lapply(
+      seq_len(nrow(df_pkgs)),
+      function(i) {
+        switch(
+          df_pkgs$install_from[i] %in% c("GitHub", "GitLab"),
+          list(
+            packages =
+              paste0(df_pkgs$RemoteType[i], "::",
+                     df_pkgs$RemoteUsername[i], "/",
+                     df_pkgs$RemoteRepo[i], "@", df_pkgs$RemoteRef[i])
+          )
+        ) %||%
+          switch(
+            df_pkgs$install_from[i] %in% "BioConductor",
+            list(packages = paste0("bioc::", df_pkgs$Package[i]))
+          ) %||%
+          switch(
+            endsWith(df_pkgs$install_from[i], "r-universe.dev"),
+            list(packages = df_pkgs$Package[i], repos = c(df_pkgs$Repository[i], "https://cloud.r-project.org"))
+          ) %||%
+          list(packages = df_pkgs$Package[i])
+      }
     )
+
 
   # return df of pkgs that will be installed -----------------------------------
   package_name_width <- max(nchar(df_pkgs$Package))
@@ -67,7 +81,10 @@ install_pkgs_with_renv_install <- function(df_pkgs_to_install) {
   for (i in seq_len(nrow(df_pkgs_to_install))) {
     tryCatch(
       invisible(utils::capture.output(
-        renv::install(df_pkgs_to_install$renv_install_pkg_arg[i])
+        do.call(
+          what = renv::install,
+          args = df_pkgs_to_install$renv_install_pkg_arg[[i]]
+        )
       )),
       error = function(e) {
         cli::cli_alert_danger("{.pkg {df_pkgs_to_install$package[i]}} could not be installed.")
@@ -96,3 +113,8 @@ base_pkgs <- c(
   "methods", "parallel", "splines", "stats", "stats4", "tools", "tcltk",
   "utils"
 )
+
+`%||%` <- function(x, y) {
+  if (is.null(x)) return(y)
+  else x
+}
