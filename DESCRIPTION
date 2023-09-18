@@ -1,6 +1,6 @@
 Package: updater
 Title: Utilities for Updating R
-Version: 0.1.1.9000
+Version: 0.1.1.9001
 Authors@R: 
     person("Daniel D.", "Sjoberg", , "danield.sjoberg@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-0862-2018"))
@@ -14,7 +14,7 @@ URL: https://github.com/ddsjoberg/updater, https://www.danieldsjoberg.com/update
 BugReports: https://github.com/ddsjoberg/updater/issues
 Imports: 
     cli (>= 3.3.0),
-    renv (>= 0.15.5)
+    renv (>= 1.0.2)
 Suggests: 
     covr,
     spelling,
@@ -23,4 +23,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3

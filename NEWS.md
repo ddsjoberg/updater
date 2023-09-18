@@ -1,5 +1,7 @@
 # updater (development version)
 
+* In the release of {renv} v1.0.0 release, `renv::install()` prompts users by default about the installation of each function. This default behavior has now been silenced. (#9)
+
 # updater 0.1.1
 
 * The `install_pkgs()` function can now re-install packages from the R-Universe. (#3)
