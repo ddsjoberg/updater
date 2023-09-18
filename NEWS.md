@@ -1,6 +1,6 @@
 # updater (development version)
 
-* In the release of {renv} v1.0.0 release, `renv::install()` prompts users by default about the installation of each function. This default behavior has now been silenced. (#9)
+* In the release of {renv} v1.0.0 release, `renv::install()` began prompting users by default about the installation of each package. This default behavior has now been silenced with `renv::install(prompt=FALSE)`. (#9)
 
 # updater 0.1.1
 

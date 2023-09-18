@@ -28,30 +28,30 @@ it’s important to re-install the packages and not copy them.
 
 1.  Record location of current R system library
 
-    -   Open your current version of R (before you update), and type
-        `.libPaths()` into the console. The current R system library
-        locations will print to the console: save these file locations,
-        e.g. copy and past the locations into Notepad or TextEdit.
-    -   It may be possible to skip this step and find the library
-        location by calling `find_previous_library_location()` from your
-        updated R session, but it’s recommended to use `.libPaths()` now
-        to ensure accuracy. It’s likely that this function only works on
-        **Windows** machines. If you are a Mac or Linux user and would
-        like to contribute to your OS’s functionality, please file an
-        issue on GitHub.
+    - Open your current version of R (before you update), and type
+      `.libPaths()` into the console. The current R system library
+      locations will print to the console: save these file locations,
+      e.g. copy and past the locations into Notepad or TextEdit.
+    - It may be possible to skip this step and find the library location
+      by calling `find_previous_library_location()` from your updated R
+      session, but it’s recommended to use `.libPaths()` now to ensure
+      accuracy. It’s likely that this function only works on **Windows**
+      machines. If you are a Mac or Linux user and would like to
+      contribute to your OS’s functionality, please file an issue on
+      GitHub.
 
 2.  Install R
 
-    -   Download and install the new version of R from
-        <https://cran.r-project.org/>.
+    - Download and install the new version of R from
+      <https://cran.r-project.org/>.
 
 3.  Install packages
 
-    -   Open your new version of R and install the {updater} package
-        with `install.packages("updater")`.
-    -   Run
-        `updater::install_pkgs(lib.loc = c("<location(s) saved in Step 1>"))`.
-        *As mentioned above, if you didn’t record the location, you may
-        try to locate it with `find_previous_library_location()`.*
+    - Open your new version of R and install the {updater} package with
+      `install.packages("updater")`.
+    - Run
+      `updater::install_pkgs(lib.loc = c("<location(s) saved in Step 1>"))`.
+      *As mentioned above, if you didn’t record the location, you may
+      try to locate it with `find_previous_library_location()`.*
 
     <img src = "https://github.com/ddsjoberg/updater/blob/main/man/figures/install_screenshot.png?raw=true">
