@@ -83,7 +83,7 @@ install_pkgs_with_renv_install <- function(df_pkgs_to_install) {
       invisible(utils::capture.output(
         do.call(
           what = renv::install,
-          args = df_pkgs_to_install$renv_install_pkg_arg[[i]]
+          args = c(df_pkgs_to_install$renv_install_pkg_arg[[i]], list(prompt = FALSE))
         )
       )),
       error = function(e) {
